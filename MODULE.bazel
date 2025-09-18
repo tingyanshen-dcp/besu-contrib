@@ -1,0 +1,49 @@
+""" Bazel build and test dependencies """
+
+# NOTE: when editing this file, also update lockfile.
+module(
+    name = "besu_contrib",
+    compatibility_level = 0,
+    repo_name = "besu-contrib",
+    version = "2025.0.0-SNAOPSHOT",
+)
+
+# Bazel module dependencies
+bazel_dep(name = "rules_java", version = "8.15.2")
+bazel_dep(name = "rules_jvm_external", version = "6.5")
+
+BESU_23103_HOTFIX_ARTIFACTS = [
+    "org.hyperledger.besu.internal:besu:23.10.3-hotfix",
+]
+
+BESU_24100_ARTIFACTS = [
+    "org.hyperledger.besu.internal:besu:24.10.0",
+]
+
+BESU_MAVE_REPOSITORIES = [
+    "https://repo.maven.apache.org/maven2/",
+    "https://hyperledger.jfrog.io/hyperledger/besu-maven",
+    "https://artifacts.consensys.net/public/maven/maven/",
+    "https://splunk.jfrog.io/splunk/ext-releases-local",
+]
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    name = "23103_hotfix_maven",
+    artifacts = BESU_23103_HOTFIX_ARTIFACTS,
+    repositories = BESU_MAVE_REPOSITORIES,
+    excluded_artifacts = [
+        "io.grpc:grpc-core", 
+    ],
+    lock_file = "//:migration/23.10.3-hotfix/maven_install.json",
+)
+
+maven.install(
+    name = "24100_maven",
+    artifacts = BESU_24100_ARTIFACTS,
+    repositories = BESU_MAVE_REPOSITORIES,
+    lock_file = "//:migration/24.10.0/maven_install.json",
+)
+
+use_repo(maven, "23103_hotfix_maven")
+use_repo(maven, "24100_maven")

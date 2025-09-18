@@ -1,0 +1,9 @@
+# MacOS
+.DS_Store
+
+# BazelBuild
+bazel-*
+
+# Jetbrains IDEs
+.idea/
+.ijwb/
