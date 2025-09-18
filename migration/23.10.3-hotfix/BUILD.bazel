@@ -1,0 +1,10 @@
+load("@rules_java//java:defs.bzl", "java_binary")
+load("@rules_jvm_external//:defs.bzl", "artifact")
+
+java_binary(
+    name = "besu",
+    main_class = "org.hyperledger.besu.Besu",
+    runtime_deps = [
+        artifact("org.hyperledger.besu.internal:besu", "23103_hotfix_maven"),
+    ],
+)
