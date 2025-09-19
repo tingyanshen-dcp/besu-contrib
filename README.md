@@ -1,2 +1,2 @@
-# Besu Contrib [![BazelBuild](https://github.com/tingyanshen-dcp/bazel-contrib/actions/workflows/bazel.yml/badge.svg)](https://github.com/tingyanshen-dcp/bazel-contrib/actions/workflows/bazel.yml)
+# Besu Contrib [![BazelBuild](https://github.com/tingyanshen-dcp/besu-contrib/actions/workflows/bazel.yml/badge.svg)](https://github.com/tingyanshen-dcp/besu-contrib/actions/workflows/bazel.yml)
 Contrib Repository for Hyperledger Besu build with Google BazelBuild.
