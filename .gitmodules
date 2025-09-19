@@ -1,0 +1,3 @@
+[submodule "thirdparty/bazelisk"]
+	path = thirdparty/bazelisk
+	url = https://github.com/bazelbuild/bazelisk.git
