@@ -5,6 +5,6 @@ java_binary(
     name = "besu",
     main_class = "org.hyperledger.besu.Besu",
     runtime_deps = [
-        artifact("org.hyperledger.besu.internal:besu", "24100_maven"),
+        artifact("org.hyperledger.besu.internal:besu", "besu_maven_24100"),
     ],
 )

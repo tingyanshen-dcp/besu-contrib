@@ -20,7 +20,7 @@ BESU_24100_ARTIFACTS = [
     "org.hyperledger.besu.internal:besu:24.10.0",
 ]
 
-BESU_MAVE_REPOSITORIES = [
+BESU_MAVEN_REPOSITORIES = [
     "https://repo.maven.apache.org/maven2/",
     "https://hyperledger.jfrog.io/hyperledger/besu-maven",
     "https://artifacts.consensys.net/public/maven/maven/",
@@ -29,21 +29,21 @@ BESU_MAVE_REPOSITORIES = [
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
-    name = "23103_hotfix_maven",
+    name = "besu_maven_23103_hotfix",
     artifacts = BESU_23103_HOTFIX_ARTIFACTS,
-    repositories = BESU_MAVE_REPOSITORIES,
+    repositories = BESU_MAVEN_REPOSITORIES,
     excluded_artifacts = [
-        "io.grpc:grpc-core", 
+        "io.grpc:grpc-core",
     ],
     lock_file = "//:migration/23.10.3-hotfix/maven_install.json",
 )
 
 maven.install(
-    name = "24100_maven",
+    name = "besu_maven_24100",
     artifacts = BESU_24100_ARTIFACTS,
-    repositories = BESU_MAVE_REPOSITORIES,
+    repositories = BESU_MAVEN_REPOSITORIES,
     lock_file = "//:migration/24.10.0/maven_install.json",
 )
 
-use_repo(maven, "23103_hotfix_maven")
-use_repo(maven, "24100_maven")
+use_repo(maven, "besu_maven_23103_hotfix")
+use_repo(maven, "besu_maven_24100")
