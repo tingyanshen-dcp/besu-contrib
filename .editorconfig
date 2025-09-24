@@ -11,5 +11,5 @@ charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = false
 
-[{*.gitmodules, BUILD, BUILD.bazel}]
+[{*.gitmodules, BUILD, BUILD.bazel, *.BUILD}]
 indent_size = 4
