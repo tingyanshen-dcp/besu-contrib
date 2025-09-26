@@ -1,8 +1,13 @@
 load("@dagger_245//:workspace_defs.bzl", "dagger_rules")
-load("@rules_java//java:defs.bzl", "java_library", "java_plugin")
+load("@org_hyperledger_besu_contrib//thirdparty/maven/immutables:defs.bzl", "immutables_rules")
+load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_jvm_external//:defs.bzl", "artifact")
 
 package(default_visibility = ["//visibility:public"])
+
+immutables_rules(repo_name = "@besu_maven_23103_hotfix")
+
+dagger_rules(repo_name = "@besu_maven_23103_hotfix")
 
 filegroup(
     name = "besu_srcs",
@@ -1028,23 +1033,3 @@ java_library(
         artifact("com.google.errorprone:error_prone_annotations", "besu_maven_23103_hotfix"),
     ],
 )
-
-java_library(
-    name = "immutables_value",
-    exported_plugins = [":immutables_processor"],
-    visibility = ["//visibility:public"],
-    exports = [
-        "@besu_maven_23103_hotfix//:org_immutables_value",
-    ],
-)
-
-java_plugin(
-    name = "immutables_processor",
-    generates_api = 1,
-    processor_class = "org.immutables.processor.ProxyProcessor",
-    deps = [
-        "@besu_maven_23103_hotfix//:org_immutables_value_processor",
-    ],
-)
-
-dagger_rules(repo_name = "@besu_maven_23103_hotfix")
