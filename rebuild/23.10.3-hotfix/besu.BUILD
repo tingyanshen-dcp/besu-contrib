@@ -1,4 +1,4 @@
-load("@dagger_245//:workspace_defs.bzl", "dagger_rules")
+load("@org_hyperledger_besu_contrib//thirdparty/maven/dagger:defs.bzl", "dagger_rules")
 load("@org_hyperledger_besu_contrib//thirdparty/maven/immutables:defs.bzl", "immutables_rules")
 load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_jvm_external//:defs.bzl", "artifact")

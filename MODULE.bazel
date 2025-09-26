@@ -182,13 +182,6 @@ http_archive(
 )
 
 http_archive(
-    name = "dagger_245",
-    strip_prefix = "dagger-dagger-2.45",
-    sha256 = "8f55f8b081a72835fed96be66dbfccb95ee2ceff092872397e5e639cccec2114",
-    urls = ["https://github.com/google/dagger/archive/dagger-2.45.zip"],
-)
-
-http_archive(
     name = "org_hyperledger_besu_24100",
     build_file = "@org_hyperledger_besu_contrib//rebuild/24.10.0:besu.BUILD",
     strip_prefix = "besu-24.10.0",
