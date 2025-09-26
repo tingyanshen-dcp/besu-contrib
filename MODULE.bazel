@@ -175,7 +175,7 @@ http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "ht
 
 http_archive(
     name = "org_hyperledger_besu_23103_hotfix",
-    build_file = "@org_hyperledger_besu_contrib//rebuild/23.10.3-hotfix:besu.BUILD",
+    build_file = "@org_hyperledger_besu_contrib//rebuild/23.10.3-hotfix:BUILD.besu.bazel",
     strip_prefix = "besu-23.10.3-hotfix",
     sha256 = "7e98182a42571652c2da797e818c7a7352013e8eae41a3979670d6b47c5f50fe",
     urls = ["https://github.com/hyperledger/besu/archive/refs/tags/23.10.3-hotfix.tar.gz"],
@@ -183,7 +183,7 @@ http_archive(
 
 http_archive(
     name = "org_hyperledger_besu_24100",
-    build_file = "@org_hyperledger_besu_contrib//rebuild/24.10.0:besu.BUILD",
+    build_file = "@org_hyperledger_besu_contrib//rebuild/24.10.0:BUILD.besu.bazel",
     strip_prefix = "besu-24.10.0",
     sha256 = "8f673c0e54c45e181b8b76631733468c4d31250ffef3bdd6af082393a214c06c",
     urls = ["https://github.com/hyperledger/besu/archive/refs/tags/24.10.0.tar.gz"],

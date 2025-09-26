@@ -2,11 +2,6 @@ load("@rules_java//java:defs.bzl", "java_library", "java_plugin")
 
 package(default_visibility = ["//visibility:public"])
 
-exports_files([
-    "besu.BUILD",
-    "maven_install.json",
-])
-
 # java_binary(
 #     name = "besu",
 #     main_class = "org.hyperledger.besu.Besu",
