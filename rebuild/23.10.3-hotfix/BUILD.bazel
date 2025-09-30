@@ -1,11 +1,11 @@
-load("@rules_java//java:defs.bzl", "java_library", "java_plugin")
+load("@rules_java//java:defs.bzl", "java_binary")
 
 package(default_visibility = ["//visibility:public"])
 
-# java_binary(
-#     name = "besu",
-#     main_class = "org.hyperledger.besu.Besu",
-#     runtime_deps = [
-#         "@org_hyperledger_besu_23103_hotfix//:besu",
-#     ],
-# )
+java_binary(
+    name = "besu",
+    main_class = "org.hyperledger.besu.Besu",
+    runtime_deps = [
+        "@besu_rebuild_23103_hotfix//:besu",
+    ],
+)

@@ -279,14 +279,24 @@ BESU_MAVEN_REPOSITORIES = [
 ]
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+
 maven.install(
-    name = "besu_maven_23103_hotfix",
+    name = "maven_besu_migration_23103_hotfix",
+    artifacts = BESU_23103_HOTFIX_ARTIFACTS,
+    repositories = BESU_MAVEN_REPOSITORIES,
+    lock_file = "//migration/23.10.3-hotfix:maven_install.json",
+)
+
+use_repo(maven, "maven_besu_migration_23103_hotfix")
+
+maven.install(
+    name = "maven_besu_rebuild_23103_hotfix",
     artifacts = BESU_23103_HOTFIX_ARTIFACTS,
     repositories = BESU_MAVEN_REPOSITORIES,
     lock_file = "//rebuild/23.10.3-hotfix:maven_install.json",
 )
 
-use_repo(maven, "besu_maven_23103_hotfix")
+use_repo(maven, "maven_besu_rebuild_23103_hotfix")
 
 maven.install(
     name = "besu_maven_24100",
@@ -300,7 +310,15 @@ use_repo(maven, "besu_maven_24100")
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
-    name = "org_hyperledger_besu_23103_hotfix",
+    name = "besu_migration_23103_hotfix",
+    build_file = "@org_hyperledger_besu_contrib//migration/23.10.3-hotfix:besu.BUILD",
+    strip_prefix = "besu-23.10.3-hotfix",
+    sha256 = "7e98182a42571652c2da797e818c7a7352013e8eae41a3979670d6b47c5f50fe",
+    urls = ["https://github.com/hyperledger/besu/archive/refs/tags/23.10.3-hotfix.tar.gz"],
+)
+
+http_archive(
+    name = "besu_rebuild_23103_hotfix",
     build_file = "@org_hyperledger_besu_contrib//rebuild/23.10.3-hotfix:besu.BUILD",
     strip_prefix = "besu-23.10.3-hotfix",
     sha256 = "7e98182a42571652c2da797e818c7a7352013e8eae41a3979670d6b47c5f50fe",

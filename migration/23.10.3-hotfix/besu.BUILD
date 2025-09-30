@@ -2,18 +2,4 @@ load("@org_hyperledger_besu_contrib//rebuild/23.10.3-hotfix:defs.bzl", "besu_rul
 
 package(default_visibility = ["//visibility:public"])
 
-besu_rules()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+besu_rules(repo_name = "maven_besu_migration_23103_hotfix")
