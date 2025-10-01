@@ -6,6 +6,6 @@ java_binary(
     name = "besu",
     main_class = "org.hyperledger.besu.Besu",
     runtime_deps = [
-        "@org_hyperledger_besu_24100//:besu",
+        "@besu_migration_24100//:besu",
     ],
 )

@@ -290,6 +290,15 @@ maven.install(
 use_repo(maven, "maven_besu_migration_23103_hotfix")
 
 maven.install(
+    name = "maven_besu_migration_24100",
+    artifacts = BESU_24100_ARTIFACTS,
+    repositories = BESU_MAVEN_REPOSITORIES,
+    lock_file = "//migration/24.10.0:maven_install.json",
+)
+
+use_repo(maven, "maven_besu_migration_24100")
+
+maven.install(
     name = "maven_besu_rebuild_23103_hotfix",
     artifacts = BESU_23103_HOTFIX_ARTIFACTS,
     repositories = BESU_MAVEN_REPOSITORIES,
@@ -299,13 +308,13 @@ maven.install(
 use_repo(maven, "maven_besu_rebuild_23103_hotfix")
 
 maven.install(
-    name = "besu_maven_24100",
+    name = "maven_besu_rebuild_24100",
     artifacts = BESU_24100_ARTIFACTS,
     repositories = BESU_MAVEN_REPOSITORIES,
     lock_file = "//rebuild/24.10.0:maven_install.json",
 )
 
-use_repo(maven, "besu_maven_24100")
+use_repo(maven, "maven_besu_rebuild_24100")
 
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -318,6 +327,14 @@ http_archive(
 )
 
 http_archive(
+    name = "besu_migration_24100",
+    build_file = "@org_hyperledger_besu_contrib//migration/24.10.0:besu.BUILD",
+    strip_prefix = "besu-24.10.0",
+    sha256 = "8f673c0e54c45e181b8b76631733468c4d31250ffef3bdd6af082393a214c06c",
+    urls = ["https://github.com/hyperledger/besu/archive/refs/tags/24.10.0.tar.gz"],
+)
+
+http_archive(
     name = "besu_rebuild_23103_hotfix",
     build_file = "@org_hyperledger_besu_contrib//rebuild/23.10.3-hotfix:besu.BUILD",
     strip_prefix = "besu-23.10.3-hotfix",
@@ -326,7 +343,7 @@ http_archive(
 )
 
 http_archive(
-    name = "org_hyperledger_besu_24100",
+    name = "besu_rebuild_24100",
     build_file = "@org_hyperledger_besu_contrib//rebuild/24.10.0:besu.BUILD",
     strip_prefix = "besu-24.10.0",
     sha256 = "8f673c0e54c45e181b8b76631733468c4d31250ffef3bdd6af082393a214c06c",
