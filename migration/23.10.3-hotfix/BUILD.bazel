@@ -1,3 +1,6 @@
+load("@rules_img//img:image.bzl", "image_index", "image_manifest")
+load("@rules_img//img:layer.bzl", "image_layer")
+load("@rules_img//img:load.bzl", "image_load")
 load("@rules_java//java:defs.bzl", "java_binary")
 
 package(default_visibility = ["//visibility:public"])
@@ -8,4 +11,57 @@ java_binary(
     runtime_deps = [
         "@besu_migration_23103_hotfix//:override_besu",
     ],
+)
+
+image_layer(
+    name = "besu_layer",
+    srcs = {
+        "/besu_deploy.jar": "besu_deploy.jar",
+    },
+)
+
+image_manifest(
+    name = "besu_image_arm64",
+    base = "@distroless_arm64",
+    entrypoint = [
+        "java",
+        "-jar",
+        "/besu_deploy.jar",
+    ],
+    layers = [":besu_layer"],
+)
+
+image_manifest(
+    name = "besu_image_amd64",
+    base = "@distroless_amd64",
+    entrypoint = [
+        "java",
+        "-jar",
+        "/besu_deploy.jar",
+    ],
+    layers = [":besu_layer"],
+)
+
+image_index(
+    name = "besu_index_arm64",
+    manifests = [":besu_image_arm64"],
+    platforms = ["//platforms:linux_arm64"],
+)
+
+image_index(
+    name = "besu_index_amd64",
+    manifests = [":besu_image_amd64"],
+    platforms = ["//platforms:linux_amd64"],
+)
+
+image_load(
+    name = "besu_load_arm64",
+    image = ":besu_index_arm64",
+    tag = "besu/migration-arm64:23.10.3-hotfix",
+)
+
+image_load(
+    name = "besu_load_amd64",
+    image = ":besu_index_amd64",
+    tag = "besu/migration-amd64:23.10.3-hotfix",
 )

@@ -9,8 +9,26 @@ module(
 )
 
 # Bazel module dependencies
+bazel_dep(name = "platforms", version = "0.0.11")
+bazel_dep(name = "rules_img", version = "0.2.4")
 bazel_dep(name = "rules_java", version = "8.15.2")
 bazel_dep(name = "rules_jvm_external", version = "6.5")
+
+pull = use_repo_rule("@rules_img//img:pull.bzl", "pull")
+
+pull(
+    name = "distroless_arm64",
+    digest = "sha256:1cf7a698de41355e147965f0a227679688974b0be0da928663b9a339cfbe895e",
+    repository = "distroless/java21-debian12",
+    registry = "gcr.io",
+)
+
+pull(
+    name = "distroless_amd64",
+    digest = "sha256:3808525ac7cf057f92be53757f4929302c20ece1142cc44399da44dee9078fd1",
+    repository = "distroless/java21-debian12",
+    registry = "gcr.io",
+)
 
 include("//migration:migration.MODULE.bazel")
 include("//rebuild:rebuild.MODULE.bazel")
