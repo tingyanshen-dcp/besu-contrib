@@ -31,24 +31,24 @@ public final class BesuInfo {
   public static final String VERSION = "24.10.0";
   private static final String OS = PlatformDetector.getOS();
   private static final String VM = PlatformDetector.getVM();
-  private static final String COMMIT;
+  private static final String COMMIT = "141eb4b7527958df1c4b979e7ec7af5bd55e6bdc";
 
-  static {
-    String className = BesuInfo.class.getSimpleName() + ".class";
-    String classPath = BesuInfo.class.getResource(className).toString();
+  // static {
+  //   String className = BesuInfo.class.getSimpleName() + ".class";
+  //   String classPath = BesuInfo.class.getResource(className).toString();
 
-    String commit;
-    try {
-      URL url = new URL(classPath);
-      JarURLConnection jarConnection = (JarURLConnection) url.openConnection();
-      Manifest manifest = jarConnection.getManifest();
-      Attributes attributes = manifest.getMainAttributes();
-      commit = attributes.getValue("Commit-Hash");
-    } catch (Exception e) {
-      commit = null;
-    }
-    COMMIT = commit;
-  }
+  //   String commit;
+  //   try {
+  //     URL url = new URL(classPath);
+  //     JarURLConnection jarConnection = (JarURLConnection) url.openConnection();
+  //     Manifest manifest = jarConnection.getManifest();
+  //     Attributes attributes = manifest.getMainAttributes();
+  //     commit = attributes.getValue("Commit-Hash");
+  //   } catch (Exception e) {
+  //     commit = null;
+  //   }
+  //   COMMIT = commit;
+  // }
 
   private BesuInfo() {}
 
