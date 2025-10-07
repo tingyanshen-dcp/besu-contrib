@@ -17,14 +17,28 @@ bazel_dep(name = "rules_jvm_external", version = "6.5")
 pull = use_repo_rule("@rules_img//img:pull.bzl", "pull")
 
 pull(
-    name = "distroless_arm64",
+    name = "distroless_java17_arm64",
+    digest = "sha256:305564d3855e386c4c0d42e93fdf62ff1d46816b4d9b0d785396febf08cc0543",
+    repository = "distroless/java17-debian12",
+    registry = "gcr.io",
+)
+
+pull(
+    name = "distroless_java17_amd64",
+    digest = "sha256:a3068981b15ce38204dff5710156deb028f7b7802cf04ef03ce57024f0ff71df",
+    repository = "distroless/java17-debian12",
+    registry = "gcr.io",
+)
+
+pull(
+    name = "distroless_java21_arm64",
     digest = "sha256:1cf7a698de41355e147965f0a227679688974b0be0da928663b9a339cfbe895e",
     repository = "distroless/java21-debian12",
     registry = "gcr.io",
 )
 
 pull(
-    name = "distroless_amd64",
+    name = "distroless_java21_amd64",
     digest = "sha256:3808525ac7cf057f92be53757f4929302c20ece1142cc44399da44dee9078fd1",
     repository = "distroless/java21-debian12",
     registry = "gcr.io",

@@ -22,7 +22,7 @@ image_layer(
 
 image_manifest(
     name = "besu_image_arm64",
-    base = "@distroless_arm64",
+    base = "@distroless_java17_arm64",
     entrypoint = [
         "java",
         "-jar",
@@ -33,7 +33,7 @@ image_manifest(
 
 image_manifest(
     name = "besu_image_amd64",
-    base = "@distroless_amd64",
+    base = "@distroless_java17_amd64",
     entrypoint = [
         "java",
         "-jar",
