@@ -1,4 +1,4 @@
-load("@org_hyperledger_besu_contrib//rebuild/23.10.3-hotfix:defs.bzl", "besu_rules")
+load("@besu_contrib//rebuild/23.10.3-hotfix:defs.bzl", "besu_rules")
 load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_jvm_external//:defs.bzl", "artifact")
 
@@ -14,7 +14,7 @@ filegroup(
             "besu/src/main/java/org/hyperledger/besu/BesuInfo.java",
             "besu/src/main/java/org/hyperledger/besu/cli/ConfigurationOverviewBuilder.java",
         ],
-    ) + ["@org_hyperledger_besu_contrib//patches/version/23.10.3-hotfix:version_srcs"],
+    ) + ["@besu_contrib//patches/version/23.10.3-hotfix:version_srcs"],
 )
 
 java_library(

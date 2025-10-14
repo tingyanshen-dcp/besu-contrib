@@ -1,6 +1,3 @@
-# EditorConfig is awesome: https://EditorConfig.org
-
-# top-most EditorConfig file
 root = true
 
 [*]
@@ -11,5 +8,9 @@ charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = false
 
-[{*.gitmodules, BUILD, BUILD.bazel, *.BUILD}]
+[{BUILD,*.BUILD,*.bzl,*.bazel,*.MODULE.bazel}]
 indent_size = 4
+
+[.gitmodules]
+indent_size = 4
+indent_style = tab

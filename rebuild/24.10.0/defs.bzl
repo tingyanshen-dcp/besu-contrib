@@ -1,5 +1,5 @@
-load("@org_hyperledger_besu_contrib//thirdparty/maven/dagger:defs.bzl", "dagger_rules")
-load("@org_hyperledger_besu_contrib//thirdparty/maven/immutables:defs.bzl", "immutables_rules")
+load("@besu_contrib//thirdparty/maven/dagger:defs.bzl", "dagger_rules")
+load("@besu_contrib//thirdparty/maven/immutables:defs.bzl", "immutables_rules")
 load("@rules_jvm_external//:defs.bzl", "artifact")
 
 def besu_rules(repo_name = "maven_besu_rebuild_24100"):

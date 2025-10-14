@@ -284,7 +284,7 @@ http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "ht
 
 http_archive(
     name = "besu_migration_23103_hotfix",
-    build_file = "@org_hyperledger_besu_contrib//migration/23.10.3-hotfix:besu.BUILD",
+    build_file = "@besu_contrib//migration/23.10.3-hotfix:besu.BUILD",
     sha256 = "7e98182a42571652c2da797e818c7a7352013e8eae41a3979670d6b47c5f50fe",
     strip_prefix = "besu-23.10.3-hotfix",
     urls = ["https://github.com/hyperledger/besu/archive/refs/tags/23.10.3-hotfix.tar.gz"],
@@ -292,7 +292,7 @@ http_archive(
 
 http_archive(
     name = "besu_migration_24100",
-    build_file = "@org_hyperledger_besu_contrib//migration/24.10.0:besu.BUILD",
+    build_file = "@besu_contrib//migration/24.10.0:besu.BUILD",
     sha256 = "8f673c0e54c45e181b8b76631733468c4d31250ffef3bdd6af082393a214c06c",
     strip_prefix = "besu-24.10.0",
     urls = ["https://github.com/hyperledger/besu/archive/refs/tags/24.10.0.tar.gz"],

@@ -1,10 +1,8 @@
-""" Bazel build and test dependencies """
-
-# NOTE: when editing this file, also update lockfile.
+""" Besu Contrib """
 module(
-    name = "besu_contrib",
-    compatibility_level = 0,
-    repo_name = "org_hyperledger_besu_contrib",
+    name = "besu-contrib",
+    compatibility_level = 1,
+    repo_name = "besu_contrib",
     version = "2025.0.0-SNAOPSHOT",
 )
 

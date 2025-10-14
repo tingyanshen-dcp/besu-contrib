@@ -3,6 +3,7 @@
 
 # BazelBuild
 bazel-*
+MODULE.bazel.lock
 
 # Jetbrains IDEs
 .idea/
