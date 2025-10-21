@@ -9,7 +9,7 @@ java_binary(
     name = "besu",
     main_class = "org.hyperledger.besu.Besu",
     runtime_deps = [
-        "@besu_migration_24100//:override_besu",
+        "@besu_migration_241000//:besu",
     ],
 )
 

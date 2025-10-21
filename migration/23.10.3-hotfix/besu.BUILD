@@ -1,85 +1,9 @@
-load("@besu_contrib//rebuild/23.10.3-hotfix:defs.bzl", "besu_rules")
-load("@rules_java//java:defs.bzl", "java_library")
-load("@rules_jvm_external//:defs.bzl", "artifact")
+load("@besu_23103_hotfix//:defs.bzl", "besu_rules")
 
 package(default_visibility = ["//visibility:public"])
 
-besu_rules(repo_name = "maven_besu_migration_23103_hotfix")
-
-filegroup(
-    name = "override_besu_srcs",
-    srcs = glob(
-        ["besu/src/main/java/**/*.java"],
-        exclude = [
-            "besu/src/main/java/org/hyperledger/besu/BesuInfo.java",
-            "besu/src/main/java/org/hyperledger/besu/cli/ConfigurationOverviewBuilder.java",
-        ],
-    ) + ["@besu_contrib//patches/version/23.10.3-hotfix:version_srcs"],
-)
-
-java_library(
-    name = "override_besu",
-    srcs = [":override_besu_srcs"],
-    resources = [":besu_resources"],
-    deps = [
-        ":config",
-        ":consensus_clique",
-        ":consensus_common",
-        ":consensus_ibft",
-        ":consensus_merge",
-        ":consensus_qbft",
-        ":crypto_algorithms",
-        ":crypto_services",
-        ":dagger",
-        ":datatypes",
-        ":enclave",
-        ":ethereum_api",
-        ":ethereum_blockcreation",
-        ":ethereum_core",
-        ":ethereum_eth",
-        ":ethereum_ethstats",
-        ":ethereum_p2p",
-        ":ethereum_permissioning",
-        ":ethereum_retesteth",
-        ":ethereum_rlp",
-        ":ethereum_stratum",
-        ":ethereum_trie",
-        ":evm",
-        ":metrics_core",
-        ":nat",
-        ":pki",
-        ":plugin_api",
-        ":plugins_rocksdb",
-        ":services_kvstore",
-        ":util",
-        artifact("org.slf4j:slf4j-api", "maven_besu_migration_23103_hotfix"),
-        artifact("com.google.code.findbugs:jsr305", "maven_besu_migration_23103_hotfix"),
-        artifact("io.netty:netty-common", "maven_besu_migration_23103_hotfix"),
-        artifact("javax.inject:javax.inject", "maven_besu_migration_23103_hotfix"),
-        artifact("org.bouncycastle:bcprov-jdk18on", "maven_besu_migration_23103_hotfix"),
-        artifact("org.jetbrains:annotations", "maven_besu_migration_23103_hotfix"),
-        artifact("com.fasterxml.jackson.core:jackson-core", "maven_besu_migration_23103_hotfix"),
-        artifact("com.fasterxml.jackson.core:jackson-databind", "maven_besu_migration_23103_hotfix"),
-        artifact("com.fasterxml.jackson.core:jackson-annotations", "maven_besu_migration_23103_hotfix"),
-        artifact("com.fasterxml.jackson.datatype:jackson-datatype-jdk8", "maven_besu_migration_23103_hotfix"),
-        artifact("com.github.oshi:oshi-core", "maven_besu_migration_23103_hotfix"),
-        artifact("com.google.guava:guava", "maven_besu_migration_23103_hotfix"),
-        artifact("com.graphql-java:graphql-java", "maven_besu_migration_23103_hotfix"),
-        artifact("info.picocli:picocli", "maven_besu_migration_23103_hotfix"),
-        artifact("io.vertx:vertx-core", "maven_besu_migration_23103_hotfix"),
-        artifact("io.vertx:vertx-web", "maven_besu_migration_23103_hotfix"),
-        artifact("org.apache.commons:commons-lang3", "maven_besu_migration_23103_hotfix"),
-        artifact("org.apache.logging.log4j:log4j-core", "maven_besu_migration_23103_hotfix"),
-        artifact("io.tmio:tuweni-bytes", "maven_besu_migration_23103_hotfix"),
-        artifact("io.tmio:tuweni-config", "maven_besu_migration_23103_hotfix"),
-        artifact("io.tmio:tuweni-toml", "maven_besu_migration_23103_hotfix"),
-        artifact("io.tmio:tuweni-units", "maven_besu_migration_23103_hotfix"),
-        artifact("org.springframework.security:spring-security-crypto", "maven_besu_migration_23103_hotfix"),
-        artifact("org.xerial.snappy:snappy-java", "maven_besu_migration_23103_hotfix"),
-        artifact("tech.pegasys:jc-kzg-4844", "maven_besu_migration_23103_hotfix"),
-        artifact("org.rocksdb:rocksdbjni", "maven_besu_migration_23103_hotfix"),
-        artifact("org.apache.logging.log4j:log4j-jul", "maven_besu_migration_23103_hotfix"),
-        artifact("com.splunk.logging:splunk-library-javalogging", "maven_besu_migration_23103_hotfix"),
-        artifact("org.fusesource.jansi:jansi", "maven_besu_migration_23103_hotfix"),  # for color logging in windows
-    ],
+besu_rules(
+    dagger = "dagger_204500",
+    immutables = "immutables_209030",
+    repo_name = "maven_besu_migration_23103_hotfix",
 )
