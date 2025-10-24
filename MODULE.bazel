@@ -74,4 +74,5 @@ pull(
     registry = "gcr.io",
 )
 
-include("//migration:migration.MODULE.bazel")
+include("//migration/23.10.3-hotfix:besu.MODULE.bazel")
+include("//migration/24.10.0:besu.MODULE.bazel")
