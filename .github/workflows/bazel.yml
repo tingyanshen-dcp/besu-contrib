@@ -18,5 +18,8 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Check CodingStyle
+        run: ./tools/bazel run @bazel-contrib-lint//tools/format
+
       - name: Build with Bazelisk Python Wrapper
         run: ./tools/bazel build //...

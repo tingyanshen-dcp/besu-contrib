@@ -1,9 +1,10 @@
 """ Besu Contrib """
+
 module(
     name = "besu-contrib",
+    version = "2025.0.0-SNAPSHOT",
     compatibility_level = 1,
     repo_name = "besu_contrib",
-    version = "2025.0.0-SNAPSHOT",
 )
 
 # Bazel module dependencies
@@ -12,9 +13,9 @@ bazel_dep(name = "platforms", version = "0.0.11")
 bazel_dep(name = "rules_img", version = "0.2.4")
 bazel_dep(name = "rules_java", version = "8.15.2")
 bazel_dep(name = "rules_jvm_external", version = "6.5")
-
-bazel_dep(name = "immutables", repo_name = "immutables_209030", version = "2.9.3")
-bazel_dep(name = "immutables", repo_name = "immutables_201010", version = "2.10.1")
+bazel_dep(name = "bazel-contrib-lint", version = "2025.0.0-SNAPSHOT")
+bazel_dep(name = "immutables", version = "2.9.3", repo_name = "immutables_209030")
+bazel_dep(name = "immutables", version = "2.10.1", repo_name = "immutables_201010")
 multiple_version_override(
     module_name = "immutables",
     versions = [
@@ -23,8 +24,8 @@ multiple_version_override(
     ],
 )
 
-bazel_dep(name = "dagger", repo_name = "dagger_204500", version = "2.45")
-bazel_dep(name = "dagger", repo_name = "dagger_205200", version = "2.52")
+bazel_dep(name = "dagger", version = "2.45", repo_name = "dagger_204500")
+bazel_dep(name = "dagger", version = "2.52", repo_name = "dagger_205200")
 multiple_version_override(
     module_name = "dagger",
     versions = [
@@ -33,9 +34,8 @@ multiple_version_override(
     ],
 )
 
-bazel_dep(name = "besu", repo_name = "besu_23103_hotfix", version = "23.10.3-hotfix")
-bazel_dep(name = "besu", repo_name = "besu_241000", version = "24.10.0")
-
+bazel_dep(name = "besu", version = "23.10.3-hotfix", repo_name = "besu_23103_hotfix")
+bazel_dep(name = "besu", version = "24.10.0", repo_name = "besu_241000")
 multiple_version_override(
     module_name = "besu",
     versions = [
@@ -49,29 +49,29 @@ pull = use_repo_rule("@rules_img//img:pull.bzl", "pull")
 pull(
     name = "distroless_java17_arm64",
     digest = "sha256:305564d3855e386c4c0d42e93fdf62ff1d46816b4d9b0d785396febf08cc0543",
-    repository = "distroless/java17-debian12",
     registry = "gcr.io",
+    repository = "distroless/java17-debian12",
 )
 
 pull(
     name = "distroless_java17_amd64",
     digest = "sha256:a3068981b15ce38204dff5710156deb028f7b7802cf04ef03ce57024f0ff71df",
-    repository = "distroless/java17-debian12",
     registry = "gcr.io",
+    repository = "distroless/java17-debian12",
 )
 
 pull(
     name = "distroless_java21_arm64",
     digest = "sha256:1cf7a698de41355e147965f0a227679688974b0be0da928663b9a339cfbe895e",
-    repository = "distroless/java21-debian12",
     registry = "gcr.io",
+    repository = "distroless/java21-debian12",
 )
 
 pull(
     name = "distroless_java21_amd64",
     digest = "sha256:3808525ac7cf057f92be53757f4929302c20ece1142cc44399da44dee9078fd1",
-    repository = "distroless/java21-debian12",
     registry = "gcr.io",
+    repository = "distroless/java21-debian12",
 )
 
 include("//migration/23.10.3-hotfix:besu.MODULE.bazel")
