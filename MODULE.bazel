@@ -3,7 +3,7 @@ module(
     name = "besu-contrib",
     compatibility_level = 1,
     repo_name = "besu_contrib",
-    version = "2025.0.0-SNAOPSHOT",
+    version = "2025.0.0-SNAPSHOT",
 )
 
 # Bazel module dependencies
