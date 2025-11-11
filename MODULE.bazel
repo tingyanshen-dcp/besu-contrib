@@ -9,10 +9,10 @@ module(
 
 # Bazel module dependencies
 bazel_dep(name = "rules_license", version = "1.0.0")
-bazel_dep(name = "platforms", version = "0.0.11")
+bazel_dep(name = "platforms", version = "1.0.0")
 bazel_dep(name = "rules_img", version = "0.2.4")
-bazel_dep(name = "rules_java", version = "8.15.2")
-bazel_dep(name = "rules_jvm_external", version = "6.5")
+bazel_dep(name = "rules_java", version = "8.16.1")
+bazel_dep(name = "rules_jvm_external", version = "6.8")
 bazel_dep(name = "bazel-contrib-lint", version = "2025.0.0-SNAPSHOT")
 bazel_dep(name = "immutables", version = "2.9.3", repo_name = "immutables_209030")
 bazel_dep(name = "immutables", version = "2.10.1", repo_name = "immutables_201010")
@@ -34,11 +34,13 @@ multiple_version_override(
     ],
 )
 
+bazel_dep(name = "besu", version = "23.10.0", repo_name = "besu_231000")
 bazel_dep(name = "besu", version = "23.10.3-hotfix", repo_name = "besu_23103_hotfix")
 bazel_dep(name = "besu", version = "24.10.0", repo_name = "besu_241000")
 multiple_version_override(
     module_name = "besu",
     versions = [
+        "23.10.0",
         "23.10.3-hotfix",
         "24.10.0",
     ],
@@ -74,5 +76,6 @@ pull(
     repository = "distroless/java21-debian12",
 )
 
+include("//migration/23.10.0:besu.MODULE.bazel")
 include("//migration/23.10.3-hotfix:besu.MODULE.bazel")
 include("//migration/24.10.0:besu.MODULE.bazel")
