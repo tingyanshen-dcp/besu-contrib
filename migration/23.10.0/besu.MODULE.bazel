@@ -86,7 +86,6 @@ BESU_231000_ARTIFACTS = [
     "org.awaitility:awaitility:4.2.0",
     "org.bouncycastle:bcpkix-jdk18on:1.75",
     "org.bouncycastle:bcprov-jdk18on:1.75",
-    "org.bouncycastle:bcprov-jdk15on:1.70",
     "org.fusesource.jansi:jansi:2.4.0",
     "org.openjdk.jol:jol-core:0.17",
     "tech.pegasys:jc-kzg-4844:0.7.0",
@@ -155,6 +154,6 @@ http_archive(
     sha256 = "821558cf224d4e431e627bb9c86c8624efb07638f02fd7f7a1f175f66402c00a",
     strip_prefix = "besu-23.10.0",
     patch_strip = 1,
-    patches = ["@besu_231000//:version.patch"],
+    patches = ["@besu_231000//:version.patch","@besu_231000//:bcprov_jdk15on.patch"],
     urls = ["https://github.com/hyperledger/besu/archive/refs/tags/23.10.0.tar.gz"],
 )
